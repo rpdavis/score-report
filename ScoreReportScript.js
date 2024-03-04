@@ -101,8 +101,10 @@ console.log("Last Name: " + lastName);
         </style>
     </head>
     <body>
+    <textarea id="IntroBodyContent"></texbox>
     `;
-
+//add html text
+ document.getElementById("IntroBodyContent").innerHTML = IntroBodyContent;
     // Define clusters and their corresponding test names
     const clusters = [
         {
