@@ -1,3 +1,7 @@
+    var commaIndex = fullName.indexOf(',');
+    var lastName = fullName.substring(0, commaIndex).trim();
+    var firstName = fullName.substring(commaIndex + 2).trim(); // Adding 2 to skip the comma and the following space
+
 var IntroBodyContent = `
 
     <p><strong>I. Reason for Referral:</strong></p>
