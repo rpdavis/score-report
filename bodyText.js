@@ -1,6 +1,14 @@
+    // Get the <b> element containing the label "Name:"
+    var nameElement = document.querySelector('#dvScoreReportOutPut a');
+    var fullName = nameElement.textContent.trim();
+
+    // Split the full name into first and last name
     var commaIndex = fullName.indexOf(',');
     var lastName = fullName.substring(0, commaIndex).trim();
     var firstName = fullName.substring(commaIndex + 2).trim(); // Adding 2 to skip the comma and the following space
+
+    console.log("First Name2: " + firstName);
+    console.log("Last Name2: " + lastName);
 
 var IntroBodyContent = `
 
