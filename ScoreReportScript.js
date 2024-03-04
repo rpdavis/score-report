@@ -4,6 +4,33 @@
 // 2. Right click on the score report and select "inspect"
 // 4. Click on "⟩⟩" and select "console"
 // 5. Copy and paste the following code and hit return
+
+const editableDiv = document.querySelector('.editable');
+
+// Add click event listener to the editable div
+editableDiv.addEventListener('click', function() {
+    // Create a textarea element
+    const textarea = document.createElement('textarea');
+    // Set the value of the textarea to the content of the div
+    textarea.value = editableDiv.textContent;
+    // Replace the div with the textarea
+    editableDiv.replaceWith(textarea);
+
+    // Add a click event listener to the document to listen for clicks outside the textarea
+    document.addEventListener('click', function clickOutsideTextarea(event) {
+        // Check if the clicked element is not the textarea
+        if (event.target !== textarea) {
+            // Create a new div element
+            const newDiv = document.createElement('div');
+            // Set the content of the new div to the value of the textarea
+            newDiv.innerHTML = textarea.value;
+            // Replace the textarea with the new div
+            textarea.replaceWith(newDiv);
+            // Remove the event listener from the document
+            document.removeEventListener('click', clickOutsideTextarea);
+        }
+    });
+});
 var IntroBodyContent = `
 
     <p><strong>I. Reason for Referral:</strong></p>
