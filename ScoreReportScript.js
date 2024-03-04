@@ -106,8 +106,8 @@
     <textarea id="IntroBodyContent">hello</textarea>
     `;
 //add html text
- import('./bodyText.js')
-  .catch(error => console.error('Error importing bodyText.js:', error));
+// import('./bodyText.js')
+  //.catch(error => console.error('Error importing bodyText.js:', error));
   
     // Define clusters and their corresponding test names
     const clusters = [
