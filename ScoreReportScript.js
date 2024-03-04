@@ -298,7 +298,7 @@ newHTML += `</div>`;
     // Close the HTML content
 newHTML += `
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     let currentEditableP; // Store the currently editable paragraph
 
     // Add click event listener to the document
@@ -308,7 +308,7 @@ newHTML += `
         // Check if the clicked element is a paragraph (<p>)
         if (target.tagName.toLowerCase() === 'p') {
             // If there's a currently editable paragraph, save its content
-            if (currentEditableP) {
+            if (currentEditableP && currentEditableP !== target) {
                 currentEditableP.contentEditable = false; // Disable editing
                 currentEditableP.classList.remove('editable'); // Remove the 'editable' class
             }
@@ -325,6 +325,7 @@ newHTML += `
         }
     });
 });
+
 
     </script>
 </body>
