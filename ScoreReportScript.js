@@ -20,7 +20,7 @@ import('./bodyText.js')
 
     console.log("First Name: " + firstName);
     console.log("Last Name: " + lastName);
-})();
+
 
 //------------
     // Function to remove leading and trailing parentheses from a string
