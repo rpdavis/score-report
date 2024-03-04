@@ -5,7 +5,7 @@
 // 4. Click on "⟩⟩" and select "console"
 // 5. Copy and paste the following code and hit return
 
-import('./bodyText.js');
+import('./bodyText.js')
 
   .catch(error => console.error('Error importing /bodyText.js:', error));
 (function () {
