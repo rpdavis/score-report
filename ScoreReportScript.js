@@ -339,7 +339,6 @@ newHTML += `
 </html>
 `;
 
-    `;
 
     // Create a Blob and download the file
     const blob = new Blob([newHTML], { type: 'text/html' });
