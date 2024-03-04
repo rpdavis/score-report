@@ -24,6 +24,7 @@ const IntroBodyContent = `
 
     <p><strong>${firstName}'s scores were as follows:</strong></p>
 `;
-document.getElementById("IntroBodyContent").innerHTML = IntroBodyContent;
-// Now you can use this HTML content as needed, for example:
+var introBodyTextarea = document.getElementById("IntroBodyContent");
 
+// Set the value of the textarea to the content of IntroBodyContent
+introBodyTextarea.value = IntroBodyContent;
