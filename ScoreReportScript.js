@@ -101,7 +101,7 @@ console.log("Last Name: " + lastName);
         </style>
     </head>
     <body>
-    <textarea id="IntroBodyContent"></texbox>
+    <textarea id="IntroBodyContent">hello</textarea>
     `;
 //add html text
  document.getElementById("IntroBodyContent").innerHTML = IntroBodyContent;
