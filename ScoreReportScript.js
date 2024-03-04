@@ -6,21 +6,21 @@
 // 5. Copy and paste the following code and hit return
 
 import('./bodyText.js')
+  .catch(error => console.error('Error importing bodyText.js:', error));
 
-  .catch(error => console.error('Error importing /bodyText.js:', error));
 (function () {
     // Get the <b> element containing the label "Name:"
+    var nameElement = document.querySelector('#dvScoreReportOutPut a');
+    var fullName = nameElement.textContent.trim();
 
-var nameElement = document.querySelector('#dvScoreReportOutPut a');
-var fullName = nameElement.textContent.trim();
+    // Split the full name into first and last name
+    var commaIndex = fullName.indexOf(',');
+    var lastName = fullName.substring(0, commaIndex).trim();
+    var firstName = fullName.substring(commaIndex + 2).trim(); // Adding 2 to skip the comma and the following space
 
-// Split the full name into first and last name
-var commaIndex = fullName.indexOf(',');
-var lastName = fullName.substring(0, commaIndex).trim();
-var firstName = fullName.substring(commaIndex + 2).trim(); // Adding 2 to skip the comma and the following space
-
-console.log("First Name: " + firstName);
-console.log("Last Name: " + lastName);
+    console.log("First Name: " + firstName);
+    console.log("Last Name: " + lastName);
+})();
 
 //------------
     // Function to remove leading and trailing parentheses from a string
