@@ -5,8 +5,7 @@
 // 4. Click on "⟩⟩" and select "console"
 // 5. Copy and paste the following code and hit return
 
-import('./bodyText.js')
-  .catch(error => console.error('Error importing bodyText.js:', error));
+
 
 (function () {
     // Get the <b> element containing the label "Name:"
@@ -107,7 +106,9 @@ import('./bodyText.js')
     <textarea id="IntroBodyContent">hello</textarea>
     `;
 //add html text
- document.getElementById("IntroBodyContent").innerHTML = IntroBodyContent;
+ import('./bodyText.js')
+  .catch(error => console.error('Error importing bodyText.js:', error));
+  
     // Define clusters and their corresponding test names
     const clusters = [
         {
