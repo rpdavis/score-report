@@ -102,7 +102,7 @@
         </style>
     </head>
     <body>BODY
-    <textarea id="IntroBodyContent">hello</textarea>
+    <div"IntroBodyContent">${IntroBodyContent}</div>
     `;
 //add html text
 // import('./bodyText.js')
