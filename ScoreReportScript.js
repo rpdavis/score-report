@@ -261,10 +261,10 @@
             newHTML += `</p>`;
         }
     });
-newHTML += `<textarea id="IntroBodyContent">`;
+newHTML += `<div id="IntroBodyContent">`;
 newHTML += `<p><strong>I. Reason for Referral:</strong></p>`;
 newHTML += `<p>${firstName} was referred for this academic assessment as part of a 3-year re-evaluation for special education services. (Please see the psycho-educational report for additional information).</p>`;
-newHTML += `</textarea>`;
+newHTML += `</div>`;
 
     // Close the HTML content
     newHTML += `
