@@ -7,7 +7,6 @@
 
 
 
-(function () {
     // Get the <b> element containing the label "Name:"
     var nameElement = document.querySelector('#dvScoreReportOutPut a');
     var fullName = nameElement.textContent.trim();
@@ -276,4 +275,4 @@
     link.href = URL.createObjectURL(blob);
     link.download = 'extracted_data.html';
     link.click();
-})();
+
