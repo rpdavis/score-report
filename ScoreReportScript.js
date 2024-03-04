@@ -5,35 +5,7 @@
 // 4. Click on "⟩⟩" and select "console"
 // 5. Copy and paste the following code and hit return
 
-// Get all elements with the class "editable"
-const editableDivs = document.querySelectorAll('.editable');
 
-// Add click event listener to each editable div
-editableDivs.forEach(function(editableDiv) {
-    editableDiv.addEventListener('click', function() {
-        // Create a textarea element
-        const textarea = document.createElement('textarea');
-        // Set the value of the textarea to the content of the div
-        textarea.value = editableDiv.textContent;
-        // Replace the div with the textarea
-        editableDiv.replaceWith(textarea);
-
-        // Add a click event listener to the document to listen for clicks outside the textarea
-        document.addEventListener('click', function clickOutsideTextarea(event) {
-            // Check if the clicked element is not the textarea
-            if (event.target !== textarea) {
-                // Create a new div element
-                const newDiv = document.createElement('div');
-                // Set the content of the new div to the value of the textarea
-                newDiv.innerHTML = textarea.value;
-                // Replace the textarea with the new div
-                textarea.replaceWith(newDiv);
-                // Remove the event listener from the document
-                document.removeEventListener('click', clickOutsideTextarea);
-            }
-        });
-    });
-});
 
 var IntroBodyContent = `
 
@@ -156,6 +128,35 @@ var IntroBodyContent = `
                 font-weight: bold;
             }
         </style>
+        <script> // Get all elements with the class "editable"
+const editableDivs = document.querySelectorAll('.editable');
+
+// Add click event listener to each editable div
+editableDivs.forEach(function(editableDiv) {
+    editableDiv.addEventListener('click', function() {
+        // Create a textarea element
+        const textarea = document.createElement('textarea');
+        // Set the value of the textarea to the content of the div
+        textarea.value = editableDiv.textContent;
+        // Replace the div with the textarea
+        editableDiv.replaceWith(textarea);
+
+        // Add a click event listener to the document to listen for clicks outside the textarea
+        document.addEventListener('click', function clickOutsideTextarea(event) {
+            // Check if the clicked element is not the textarea
+            if (event.target !== textarea) {
+                // Create a new div element
+                const newDiv = document.createElement('div');
+                // Set the content of the new div to the value of the textarea
+                newDiv.innerHTML = textarea.value;
+                // Replace the textarea with the new div
+                textarea.replaceWith(newDiv);
+                // Remove the event listener from the document
+                document.removeEventListener('click', clickOutsideTextarea);
+            }
+        });
+    });
+});</script type="text/javascript">
     </head>
     <body>BODY
     <div id="IntroBodyContent" class="editable">${IntroBodyContent}</div>
