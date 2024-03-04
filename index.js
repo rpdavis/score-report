@@ -5,6 +5,6 @@
 
 
  import('./ScoreReportScript.js')
-  .catch(error => console.error('Error importing bodyText.js:', error));
+  .catch(error => console.error('Error importing ScoreReportScript.js:', error));
 
 })();
