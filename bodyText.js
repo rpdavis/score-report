@@ -38,11 +38,3 @@ var IntroBodyContent = `
 `;
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    var introBodyTextarea = document.getElementById("IntroBodyContent");
-    if (introBodyTextarea) {
-        introBodyTextarea.value = IntroBodyContent;
-    } else {
-        console.error("Textarea element with id 'IntroBodyContent' not found.");
-    }
-});
