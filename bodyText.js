@@ -36,7 +36,13 @@ var IntroBodyContent = `
 
     <p><strong>${firstName}'s scores were as follows:</strong></p>
 `;
-var introBodyTextarea = document.getElementById("IntroBodyContent");
 
-// Set the value of the textarea to the content of IntroBodyContent
-introBodyTextarea.value = IntroBodyContent;
+
+document.addEventListener("DOMContentLoaded", function() {
+    var introBodyTextarea = document.getElementById("IntroBodyContent");
+    if (introBodyTextarea) {
+        introBodyTextarea.value = IntroBodyContent;
+    } else {
+        console.error("Textarea element with id 'IntroBodyContent' not found.");
+    }
+});
