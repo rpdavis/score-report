@@ -296,43 +296,49 @@ newHTML += `<p>${firstName} was referred for this academic assessment as part of
 newHTML += `</div>`;
 
     // Close the HTML content
-    newHTML += `
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get all elements with the class "editable"
-        const editableDivs = document.querySelectorAll('.editable');
+newHTML += `
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all elements with the class "editable"
+            const editableDivs = document.querySelectorAll('.editable');
 
-        // Add click event listener to each editable div
-        editableDivs.forEach(function(editableDiv) {
-            editableDiv.addEventListener('click', function() {
-                // Create a textarea element
-                const textarea = document.createElement('textarea');
-                // Set the value of the textarea to the content of the div
-                textarea.value = editableDiv.textContent;
-                // Replace the div with the textarea
-                editableDiv.replaceWith(textarea);
+            // Add click event listener to each editable div
+            editableDivs.forEach(function(editableDiv) {
+                editableDiv.addEventListener('click', function() {
+                    // Create a textarea element
+                    const textarea = document.createElement('textarea');
+                    // Set the value of the textarea to the content of the div
+                    textarea.value = editableDiv.textContent;
+                    // Replace the div with the textarea
+                    editableDiv.replaceWith(textarea);
 
-                // Add a click event listener to the document to listen for clicks outside the textarea
-                document.addEventListener('click', function clickOutsideTextarea(event) {
-                    // Check if the clicked element is not the textarea
-                    if (event.target !== textarea) {
-                        // Create a new div element
-                        const newDiv = document.createElement('div');
-                        // Set the content of the new div to the value of the textarea
-                        newDiv.innerHTML = textarea.value;
-                        // Replace the textarea with the new div
-                        textarea.replaceWith(newDiv);
-                        // Remove the event listener from the document
-                        document.removeEventListener('click', clickOutsideTextarea);
-                    }
+                    // Add a click event listener to the document to listen for clicks outside the textarea
+                    document.addEventListener('click', clickOutsideTextarea);
                 });
             });
-        });
-    });
-</script>
-    </body>
 
-    </html>
+            // Function to handle clicks outside the textarea
+            function clickOutsideTextarea(event) {
+                // Get all textareas
+                const textareas = document.querySelectorAll('textarea');
+                // Check if the clicked element is not a textarea
+                if (!Array.from(textareas).some(textarea => textarea.contains(event.target))) {
+                    // Convert all textareas back to divs
+                    textareas.forEach(textarea => {
+                        const newDiv = document.createElement('div');
+                        newDiv.textContent = textarea.value;
+                        textarea.replaceWith(newDiv);
+                    });
+                    // Remove the event listener from the document
+                    document.removeEventListener('click', clickOutsideTextarea);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+`;
+
     `;
 
     // Create a Blob and download the file
