@@ -100,7 +100,7 @@ console.log("Last Name: " + lastName);
             }
         </style>
     </head>
-    <body>
+    <body>BODY
     <textarea id="IntroBodyContent">hello</textarea>
     `;
 //add html text
