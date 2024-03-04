@@ -299,41 +299,33 @@ newHTML += `</div>`;
 newHTML += `
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            // Get all elements with the class "editable"
-            const editableDivs = document.querySelectorAll('.editable');
+    let currentEditableP; // Store the currently editable paragraph
 
-            // Add click event listener to each editable div
-            editableDivs.forEach(function(editableDiv) {
-                editableDiv.addEventListener('click', function() {
-                    // Create a textarea element
-                    const textarea = document.createElement('textarea');
-                    // Set the value of the textarea to the content of the div
-                    textarea.value = editableDiv.textContent;
-                    // Replace the div with the textarea
-                    editableDiv.replaceWith(textarea);
+    // Add click event listener to the document
+    document.addEventListener('click', function(event) {
+        const target = event.target;
 
-                    // Add a click event listener to the document to listen for clicks outside the textarea
-                    document.addEventListener('click', clickOutsideTextarea);
-                });
-            });
-
-            // Function to handle clicks outside the textarea
-            function clickOutsideTextarea(event) {
-                // Get all textareas
-                const textareas = document.querySelectorAll('textarea');
-                // Check if the clicked element is not a textarea
-                if (!Array.from(textareas).some(textarea => textarea.contains(event.target))) {
-                    // Convert all textareas back to divs
-                    textareas.forEach(textarea => {
-                        const newDiv = document.createElement('div');
-                        newDiv.textContent = textarea.value;
-                        textarea.replaceWith(newDiv);
-                    });
-                    // Remove the event listener from the document
-                    document.removeEventListener('click', clickOutsideTextarea);
-                }
+        // Check if the clicked element is a paragraph (<p>)
+        if (target.tagName.toLowerCase() === 'p') {
+            // If there's a currently editable paragraph, save its content
+            if (currentEditableP) {
+                currentEditableP.contentEditable = false; // Disable editing
+                currentEditableP.classList.remove('editable'); // Remove the 'editable' class
             }
-        });
+
+            // Set the clicked paragraph as the current editable paragraph
+            currentEditableP = target;
+            currentEditableP.contentEditable = true; // Enable editing
+            currentEditableP.classList.add('editable'); // Add the 'editable' class
+        } else if (currentEditableP) {
+            // If clicked element is not a paragraph and there's a currently editable paragraph, save its content
+            currentEditableP.contentEditable = false; // Disable editing
+            currentEditableP.classList.remove('editable'); // Remove the 'editable' class
+            currentEditableP = null; // Reset the current editable paragraph
+        }
+    });
+});
+
     </script>
 </body>
 </html>
