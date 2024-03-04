@@ -1,6 +1,6 @@
 
 // 1. Create your score report in Microsoft edge 
-// 2. Choose "Web Page" for output format
+// 2. Choose "Web Page" for output format 
 // 2. Right click on the score report and select "inspect"
 // 4. Click on "⟩⟩" and select "console"
 // 5. Copy and paste the following code and hit return
