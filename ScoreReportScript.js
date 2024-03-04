@@ -4,7 +4,10 @@
 // 2. Right click on the score report and select "inspect"
 // 4. Click on "⟩⟩" and select "console"
 // 5. Copy and paste the following code and hit return
- import { functionName } from './bodyText.js';
+
+import('./bodyText.js');
+
+  .catch(error => console.error('Error importing /bodyText.js:', error));
 (function () {
     // Get the <b> element containing the label "Name:"
 
