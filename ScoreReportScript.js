@@ -262,7 +262,7 @@
             newHTML += `</p>`;
         }
     });
-    newHTML += '<textarea id="IntroBodyContent">hello2</textarea></div>';
+    newHTML += '<textarea id="IntroBodyContent">hello2 ${IntroBodyContent}</textarea></div>';
 
     // Close the HTML content
     newHTML += `
