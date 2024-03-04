@@ -1,4 +1,4 @@
-const IntroBodyContent = `
+var IntroBodyContent = `
 
     <p><strong>I. Reason for Referral:</strong></p>
     <p>${firstName} was referred for this academic assessment as part of a 3-year re-evaluation for special education services. (Please see the psycho-educational report for additional information).</p>
