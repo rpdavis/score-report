@@ -1,4 +1,3 @@
-
 // 1. Create your score report in Microsoft edge 
 // 2. Choose "Web Page" for output format 
 // 2. Right click on the score report and select "inspect"
