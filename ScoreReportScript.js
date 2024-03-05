@@ -5,10 +5,82 @@
 // 4. Click on "⟩⟩" and select "console"
 // 5. Copy and paste the following code and hit return
 
+// Function to extract and format data from the HTML table
+function extractDataFromTable() {
+    // Get the div containing the table
+    const divScoreReportHtmlView = document.getElementById('dvScoreReportHtmlView');
+    if (!divScoreReportHtmlView) {
+        console.log('Div not found');
+        return;
+    }
+
+    // Find the first table within the div
+    const table = divScoreReportHtmlView.querySelector('table');
+    if (!table) {
+        console.log('Table not found');
+        return;
+    }
+
+    // Initialize variables to store extracted data
+    let name = '', school = '', dateOfBirth = '', age = '', sex = '', dateOfTesting = '', examiners = '';
+
+    // Extract data from each row of the table
+    const rows = table.querySelectorAll('tr');
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        if (cells.length === 2) {
+            const label = cells[0].textContent.trim();
+            const value = cells[1].textContent.trim();
+            switch (label) {
+                case 'Name:':
+                    name = value;
+                    break;
+                case 'School:':
+                    school = value;
+                    break;
+                case 'Date of Birth:':
+                    dateOfBirth = value;
+                    break;
+                case 'Age:':
+                    age = value;
+                    break;
+                case 'Sex:':
+                    sex = value;
+                    break;
+                case 'Date of Testing:':
+                    dateOfTesting = value;
+                    break;
+                case 'Examiners:':
+                    examiners = value;
+                    break;
+            }
+        }
+    });
+
+    // Create a formatted HTML string with the extracted data
+    const formattedData = `
+        <div style="border: 2px solid black; padding: 10px;">
+            <div style="display: inline-block; width: 45%;">
+                <p><b>Name:</b> ${name}</p>
+                <p><b>School:</b> ${school}</p>
+                <p><b>Date of Birth:</b> ${dateOfBirth}</p>
+                <p><b>Age:</b> ${age}</p>
+                <p><b>Sex:</b> ${sex}</p>
+                <p><b>Date of Testing:</b> ${dateOfTesting}</p>
+                <p><b>Examiners:</b> ${examiners}</p>
+            </div>
+        </div>
+    `;
+
+    // Return the formatted data
+    return formattedData;
+}
+
+
 
 
 var IntroBodyContent = `
-
+      ${formattedData}
     <p><strong>I. Reason for Referral:</strong></p>
     <p>${firstName} was referred for this academic assessment as part of a 3-year re-evaluation for special education services. (Please see the psycho-educational report for additional information).</p>
 
