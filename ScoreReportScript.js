@@ -5,6 +5,7 @@
 // 4. Click on "⟩⟩" and select "console"
 // 5. Copy and paste the following code and hit return
 
+
 function extractDataFromTable() {
     // Get the div containing the table
     const divScoreReportHtmlView = document.getElementById('dvScoreReportHtmlView');
