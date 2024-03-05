@@ -43,22 +43,19 @@ function extractDataFromTable() {
                 case 'Age:':
                     age = value;
                     break;
-                case 'Sex:':
-                    sex = value; // Set sex directly if label is 'Sex:'
-                    break;
                 case 'Date of Testing:':
                     dateOfTesting = value;
                     break;
                 case 'Examiners:':
                     examiners = value;
                     break;
-            }
-        } else if (cells.length === 1 && cells[0].querySelector('b') && cells[0].querySelector('b').textContent.trim() === 'Sex:') {
-            // Extract sex value from the cell containing 'Sex:'
-            const sexCellText = cells[0].textContent.trim(); // Get text content of the cell
-            const sexMatch = sexCellText.match(/Sex:&nbsp;(\w+)/); // Match 'Sex:' followed by a word (Male/Female)
-            if (sexMatch) {
-                sex = sexMatch[1]; // Extract the matched value
+                case 'Sex:':
+                    // Check if the text contains "Sex:"
+                    if (cells[0].textContent.trim().includes('Sex:')) {
+                        // Extract the remaining text after "Sex:"
+                        sex = cells[0].textContent.trim().replace('Sex:', '');
+                    }
+                    break;
             }
         }
     });
@@ -81,7 +78,6 @@ function extractDataFromTable() {
     // Return the formatted data
     return formattedData;
 }
-
 
 // Call the function to extract data from the table
 const formattedData = extractDataFromTable();
