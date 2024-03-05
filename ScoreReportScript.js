@@ -5,7 +5,6 @@
 // 4. Click on "⟩⟩" and select "console"
 // 5. Copy and paste the following code and hit return
 
-// Function to extract and format data from the HTML table
 function extractDataFromTable() {
     // Get the div containing the table
     const divScoreReportHtmlView = document.getElementById('dvScoreReportHtmlView');
@@ -44,10 +43,6 @@ function extractDataFromTable() {
                 case 'Age:':
                     age = value;
                     break;
-                case 'Sex:':
-                case 'Sex: ': // Additional case for handling extra spaces
-                    sex = value;
-                    break;
                 case 'Date of Testing:':
                     dateOfTesting = value;
                     break;
@@ -55,6 +50,8 @@ function extractDataFromTable() {
                     examiners = value;
                     break;
             }
+        } else if (cells.length === 1 && cells[0].querySelector('b') && cells[0].querySelector('b').textContent.trim() === 'Sex:') {
+            sex = cells[0].textContent.trim().replace('Sex:', '');
         }
     });
 
@@ -76,6 +73,7 @@ function extractDataFromTable() {
     // Return the formatted data
     return formattedData;
 }
+
 
 // Call the function to extract data from the table
 const formattedData = extractDataFromTable();
