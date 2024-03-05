@@ -47,7 +47,7 @@ function extractDataFromTable() {
             }
         });
     });
-
+});
 
 // Call the function to extract data from the table
 const formattedData = extractDataFromTable();
