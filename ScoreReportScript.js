@@ -28,54 +28,25 @@ function extractDataFromTable() {
     rows.forEach(row => {
         const cells = row.querySelectorAll('td');
         cells.forEach(cell => {
-            const label = cell.querySelector('b');
-            if (label) {
-                const labelText = label.textContent.trim();
-                const value = cell.textContent.trim().replace(labelText, '');
-                switch (labelText) {
-                    case 'Name:':
-                        name = value;
-                        break;
-                    case 'School:':
-                        school = value;
-                        break;
-                    case 'Date of Birth:':
-                        dateOfBirth = value;
-                        break;
-                    case 'Age:':
-                        age = value;
-                        break;
-                    case 'Sex:':
-                        sex = value;
-                        break;
-                    case 'Date of Testing:':
-                        dateOfTesting = value;
-                        break;
-                    case 'Examiners:':
-                        examiners = value;
-                        break;
-                }
+            const textContent = cell.textContent.trim();
+            if (textContent.includes('Name:')) {
+                name = textContent.replace('Name:', '').trim();
+            } else if (textContent.includes('School:')) {
+                school = textContent.replace('School:', '').trim();
+            } else if (textContent.includes('Date of Birth:')) {
+                dateOfBirth = textContent.replace('Date of Birth:', '').trim();
+            } else if (textContent.includes('Age:')) {
+                age = textContent.replace('Age:', '').trim();
+            } else if (textContent.includes('Sex:')) {
+                sex = textContent.replace('Sex:', '').trim();
+            } else if (textContent.includes('Date of Testing:')) {
+                dateOfTesting = textContent.replace('Date of Testing:', '').trim();
+            } else if (textContent.includes('Examiners:')) {
+                examiners = textContent.replace('Examiners:', '').trim();
             }
         });
     });
-    // Create a formatted HTML string with the extracted data
-    const formattedData = `
-        <div style="border: 2px solid black; padding: 10px;">
-            <div style="display: inline-block; width: 45%;">
-                <p><b>Name:</b> ${name}</p>
-                <p><b>School:</b> ${school}</p>
-                <p><b>Date of Birth:</b> ${dateOfBirth}</p>
-                <p><b>Age:</b> ${age}</p>
-                <p><b>Sex:</b> ${sex}</p>
-                <p><b>Date of Testing:</b> ${dateOfTesting}</p>
-                <p><b>Examiners:</b> ${examiners}</p>
-            </div>
-        </div>
-    `;
 
-    // Return the formatted data
-    return formattedData;
-}
 
 // Call the function to extract data from the table
 const formattedData = extractDataFromTable();
