@@ -328,24 +328,25 @@
             });
         });
 
-    // Generate paragraphs at the bottom of the page based on descriptor categories
-    newHTML += '<div>';
-    ['Very Superior', 'Superior', 'High Average', 'Average','Low Average', 'Low', 'Very Low'].forEach((descriptor) => {
-        const testsWithScore = Object.entries(testScores)
-            .filter(([testName, score]) => getDescription(score) === descriptor);
+// Generate paragraphs at the bottom of the page based on descriptor categories
+newHTML += '<div>';
+['Very Superior', 'Superior', 'High Average', 'Average','Low Average', 'Low', 'Very Low'].forEach((descriptor) => {
+    const testsWithScore = Object.entries(testScores)
+        .filter(([testName, score]) => getDescription(score) === descriptor);
 
-        if (testsWithScore.length > 0) {
-            newHTML += `<p>When compared to other students at their age level, ${firstName}’s standard scores are in the ${descriptor.toLowerCase()} range for `;
-            newHTML += testsWithScore.map(([testName, score]) => `${capitalizeFirstLetter(testName)} (${score})`).join(', ');
-            newHTML += `</p>`;
-        }
-    });
+    if (testsWithScore.length > 0) {
+        newHTML += `<p>When compared to other students at their age level, ${firstName}’s standard scores are in the ${descriptor.toLowerCase()} range for `;
+        newHTML += testsWithScore.map(([testName, score]) => `${capitalizeFirstLetter(testName)} (${score})`).join(', ');
+        newHTML += `</p>`;
+    }
+});
+newHTML += `</div>`;
 newHTML += `<div id="IntroBodyContent">`;
 newHTML += `<p><strong>I. Reason for Referral:</strong></p>`;
 newHTML += `<p>${firstName} was referred for this academic assessment as part of a 3-year re-evaluation for special education services. (Please see the psycho-educational report for additional information).</p>`;
 newHTML += `</div>`;
 
-    // Close the HTML content
+// Close the HTML content
 newHTML += `
     <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', function() {
@@ -382,11 +383,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </html>
 `;
 
-
-    // Create a Blob and download the file
-    const blob = new Blob([newHTML], { type: 'text/html' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'extracted_data.html';
-    link.click();
-)();
+// Create a Blob and download the file
+const blob = new Blob([newHTML], { type: 'text/html' });
+const link = document.createElement('a');
+link.href = URL.createObjectURL(blob);
+link.download = 'extracted_data.html';
+link.click();
