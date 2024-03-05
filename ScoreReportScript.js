@@ -49,15 +49,12 @@ function extractDataFromTable() {
                 case 'Examiners:':
                     examiners = value;
                     break;
-                case 'Sex:':
-                    // Check if the text contains "Sex:"
-                    if (cells[0].textContent.trim().includes('Sex:')) {
-                        // Extract the remaining text after "Sex:"
-                        sex = cells[0].textContent.trim().replace('Sex:', '');
-                    }
-                    break;
             }
-        }
+        }else if (cells.length === 1 && cells[0].textContent.includes('Sex:')) {
+                    // Extract the content of the cell and remove the word "Sex:"
+                    sex = cells[0].textContent.trim().replace('Sex:', '');
+                }    
+                
     });
 
     // Create a formatted HTML string with the extracted data
