@@ -389,4 +389,4 @@ document.addEventListener('DOMContentLoaded', function() {
     link.href = URL.createObjectURL(blob);
     link.download = 'extracted_data.html';
     link.click();
-})();
+)();
