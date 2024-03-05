@@ -27,36 +27,37 @@ function extractDataFromTable() {
     const rows = table.querySelectorAll('tr');
     rows.forEach(row => {
         const cells = row.querySelectorAll('td');
-        if (cells.length === 2) {
-            const label = cells[0].textContent.trim();
-            const value = cells[1].textContent.trim();
-            switch (label) {
-                case 'Name:':
-                    name = value;
-                    break;
-                case 'School:':
-                    school = value;
-                    break;
-                case 'Date of Birth:':
-                    dateOfBirth = value;
-                    break;
-                case 'Age:':
-                    age = value;
-                    break;
-                case 'Date of Testing:':
-                    dateOfTesting = value;
-                    break;
-                case 'Examiners:':
-                    examiners = value;
-                    break;
+        cells.forEach(cell => {
+            const label = cell.querySelector('b');
+            if (label) {
+                const labelText = label.textContent.trim();
+                const value = cell.textContent.trim().replace(labelText, '');
+                switch (labelText) {
+                    case 'Name:':
+                        name = value;
+                        break;
+                    case 'School:':
+                        school = value;
+                        break;
+                    case 'Date of Birth:':
+                        dateOfBirth = value;
+                        break;
+                    case 'Age:':
+                        age = value;
+                        break;
+                    case 'Sex:':
+                        sex = value;
+                        break;
+                    case 'Date of Testing:':
+                        dateOfTesting = value;
+                        break;
+                    case 'Examiners:':
+                        examiners = value;
+                        break;
+                }
             }
-        }else if (cells.length === 1 && cells[0].textContent.includes('Sex:')) {
-                    // Extract the content of the cell and remove the word "Sex:"
-                    sex = cells[0].textContent.trim().replace('Sex:', '');
-                }    
-                
+        });
     });
-
     // Create a formatted HTML string with the extracted data
     const formattedData = `
         <div style="border: 2px solid black; padding: 10px;">
