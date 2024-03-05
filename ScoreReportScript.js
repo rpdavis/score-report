@@ -45,6 +45,7 @@ function extractDataFromTable() {
                     age = value;
                     break;
                 case 'Sex:':
+                case 'Sex: ': // Additional case for handling extra spaces
                     sex = value;
                     break;
                 case 'Date of Testing:':
