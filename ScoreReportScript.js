@@ -76,11 +76,14 @@ function extractDataFromTable() {
     return formattedData;
 }
 
+// Call the function to extract data from the table
+const formattedData = extractDataFromTable();
 
-
-
-var IntroBodyContent = `
-      ${formattedData}
+// Check if data extraction was successful
+if (formattedData) {
+    // Populate the extracted data into the HTML content
+    var IntroBodyContent = formattedData + `
+      
     <p><strong>I. Reason for Referral:</strong></p>
     <p>${firstName} was referred for this academic assessment as part of a 3-year re-evaluation for special education services. (Please see the psycho-educational report for additional information).</p>
 
@@ -104,7 +107,8 @@ var IntroBodyContent = `
     <p>Yes__x_ No ___ These assessment results may be considered an accurate reflection of ${firstName}'s present level of academic functioning. During her timed assessments of math and writing fluency she would write the words “I don’t know” each time she skipped a problem. However, the delay is caused was relatively minimal.</p>
 
     <p><strong>${firstName}'s scores were as follows:</strong></p>
-`;
+    `;
+}
 
 
     // Get the <b> element containing the label "Name:"
